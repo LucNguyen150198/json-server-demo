@@ -20,7 +20,7 @@ GET {{baseUrl}}/{{endPoint}}?price_gte=500
 ###
 
  # @name pagination
-GET {{baseUrl}}/{{endPoint}}?_page=1&_limit=2
+GET {{baseUrl}}/{{endPoint}}?_page=2&_limit=10
 
 ###
 
@@ -31,7 +31,23 @@ GET {{baseUrl}}/{{endPoint}}?_sort=price&_order=asc
 
  # @name addNew
 POST {{baseUrl}}/{{endPoint}}
-Content-Type: 'application/json
+Content-Type: application/json
+
 {
-    "name":"ABC"
+    "name": "Sleek Cotton Table",
+    "color": "lavender",
+    "price": 540,
+    "description": "The Football Is Good For Training And Recreational Purposes",
+    "thumbnailUrl": "http://placeimg.com/400/400",
+    "categoryId": "13e9e090-395a-4cbf-844e-4cf509698a32"
+}
+###
+ # @name update
+PATCH  {{baseUrl}}/{{endPoint}}/coollOK
+Content-Type: application/json
+
+{
+    "name": "Sleek Cotton Chair",
+    "price": 100
+
 }

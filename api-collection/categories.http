@@ -1,0 +1,17 @@
+@baseUrl=http://localhost:3000/api
+@endPoint=categories
+
+
+# # Categories
+
+ # @name getAll
+GET {{baseUrl}}/{{endPoint}}
+
+###
+
+ # @name addNew
+POST {{baseUrl}}/{{endPoint}}
+Content-Type: 'application/json
+{
+    "name":"ABC"
+}

@@ -1,0 +1,37 @@
+@baseUrl=http://localhost:3000/api
+@endPoint=products
+
+
+# # Products
+
+ # @name getAll
+GET {{baseUrl}}/{{endPoint}}
+
+###
+
+ # @name getByCategoryId
+GET {{baseUrl}}/{{endPoint}}/c65dbab9-824f-4a60-8e95-5b1dea488a20
+
+###
+
+ # @name filterProducts
+GET {{baseUrl}}/{{endPoint}}?price_gte=500
+
+###
+
+ # @name pagination
+GET {{baseUrl}}/{{endPoint}}?_page=1&_limit=2
+
+###
+
+ # @name sort
+GET {{baseUrl}}/{{endPoint}}?_sort=price&_order=asc
+
+###
+
+ # @name addNew
+POST {{baseUrl}}/{{endPoint}}
+Content-Type: 'application/json
+{
+    "name":"ABC"
+}

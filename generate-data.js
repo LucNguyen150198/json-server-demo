@@ -1,7 +1,26 @@
 const faker = require('faker');
+const casual = require('casual');
 const fs = require('fs');
-
 faker.setLocale('vi');
+
+const cityList = [
+  {
+    code: 'hcm',
+    name: 'Hồ Chí Minh',
+  },
+  {
+    code: 'hn',
+    name: 'Hà Nội',
+  },
+  {
+    code: 'dn',
+    name: 'Đà Nẵng',
+  },
+  {
+    code: 'pt',
+    name: 'Phan Thiết',
+  },
+];
 
 const randomCategoryList = (n) => {
   if (n <= 0) return [];
@@ -36,15 +55,30 @@ const randomProductList = (categoryList, numbersOfProduct) => {
   return productList;
 };
 
+const randomStudentList = (n) => {
+  if (n <= 0) return [];
+
+  return Object.keys([...Array(n)]).map(() => ({
+    id: casual.uuid,
+    name: casual.name,
+    age: casual.integer(18, 27),
+    mark: Number.parseFloat(casual.double(3, 10).toFixed(1)),
+    gender: ['male', 'female'][casual.integer(1, 100) % 2],
+    city: ['hcm', 'hn', 'dn', 'pt'][casual.integer(1, 100) % 5],
+    createAt: Date.now(),
+    updateAt: Date.now(),
+  }));
+};
+
 (() => {
   const categoryList = randomCategoryList(5);
   const productList = randomProductList(categoryList, 4);
+  const studentList = randomStudentList(50);
   const db = {
     categories: categoryList,
     products: productList,
-    profile: {
-      name: 'Po',
-    },
+    students: studentList,
+    cities: cityList,
   };
 
   fs.writeFile('db.json', JSON.stringify(db), () => {
